@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/UDPort/static/css/main.073c9b0a.css",
-    "main.js": "/UDPort/static/js/main.e6ffcf8a.js",
+    "main.js": "/UDPort/static/js/main.a5b5b025.js",
     "static/js/787.865f9da1.chunk.js": "/UDPort/static/js/787.865f9da1.chunk.js",
     "index.html": "/UDPort/index.html",
     "main.073c9b0a.css.map": "/UDPort/static/css/main.073c9b0a.css.map",
-    "main.e6ffcf8a.js.map": "/UDPort/static/js/main.e6ffcf8a.js.map",
+    "main.a5b5b025.js.map": "/UDPort/static/js/main.a5b5b025.js.map",
     "787.865f9da1.chunk.js.map": "/UDPort/static/js/787.865f9da1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.e6ffcf8a.js"
+    "static/js/main.a5b5b025.js"
   ]
 }
