@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+/*Every page*/
+
+#Navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 250%;
+  opacity: 0.6;
+  background-color: rgb(115, 192, 223);
+  z-index: 3;
+}
+.Nav {
+  text-decoration: none;
+  color: black;
+}
+
+.pages {
+  margin: 0;
+  background: rgb(161, 176, 221);
+  background: linear-gradient(
+    90deg,
+    rgba(161, 176, 221, 1) 0%,
+    rgba(218, 190, 231, 1) 100%
+  );
+  animation: gradientBG 12s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*Every page end*/
+#footer {
+  padding-top: 1vh;
+  font-size: 210%;
+  background-color: rgb(136, 175, 190);
+  opacity: 0.8;
 }
