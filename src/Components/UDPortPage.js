@@ -25,14 +25,14 @@ const UDPortPage = (props) => {
 
   const uauth = new UAuth({
     // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
-    clientID: "dwUk1YgsNKPxSUXN2x3QwlSulvL1MMG34iUHnDDA8N0=",
-    clientSecret: "+RtonrEU12tVNBNxEQ3rAWqaVrALKcc7M4IxgO8BfPQ=",
+    clientID: process.env.REACT_APP_CLIENT_ID_UD,
+    clientSecret: process.env.REACT_APP_CLIENT_SECRET_UD,
   
     // These are the scopes your app is requesting from the ud server.
     scope: 'openid email:optional wallet',
   
     // This is the url that the auth server will redirect back to after every authorization attempt.
-    redirectUri: "http://localhost:3000/UDPortPage",
+    redirectUri: process.env.REACT_APP_REDIRECT_URI_UD,
   })
 
  
