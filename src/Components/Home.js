@@ -5,6 +5,7 @@ import hoverButton from "../pressed-button.png"
 import { Chart as ChartJS } from 'chart.js/auto'
 import React, { useState, useEffect } from 'react';
 import logo from "../LogoMakr-1ceYNX.png"
+import Navbar from "./Navbar"
 
 const Home = (props) => {
 
@@ -16,6 +17,7 @@ const Home = (props) => {
 
 
   return <div className="pages" style={{height: "100vh"}}>
+    <Navbar  />
     <div className="text-center" style={{paddingTop: "28vh", marginRight: "5vw"}}><img  src={logo}></img></div>
     {props.errorMessage && <div>{props.errorMessage}</div>}
     <div style={{paddingTop: "2vh", marginLeft: "37vw"}} >
