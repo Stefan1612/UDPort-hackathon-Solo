@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/UDPort/static/css/main.451613b6.chunk.css",
-    "main.js": "/UDPort/static/js/main.d80c5452.chunk.js",
-    "main.js.map": "/UDPort/static/js/main.d80c5452.chunk.js.map",
+    "main.js": "/UDPort/static/js/main.07fb49a9.chunk.js",
+    "main.js.map": "/UDPort/static/js/main.07fb49a9.chunk.js.map",
     "runtime-main.js": "/UDPort/static/js/runtime-main.ed314500.js",
     "runtime-main.js.map": "/UDPort/static/js/runtime-main.ed314500.js.map",
     "static/css/2.0a9ec390.chunk.css": "/UDPort/static/css/2.0a9ec390.chunk.css",
-    "static/js/2.76f0dedf.chunk.js": "/UDPort/static/js/2.76f0dedf.chunk.js",
-    "static/js/2.76f0dedf.chunk.js.map": "/UDPort/static/js/2.76f0dedf.chunk.js.map",
+    "static/js/2.fc77bbb4.chunk.js": "/UDPort/static/js/2.fc77bbb4.chunk.js",
+    "static/js/2.fc77bbb4.chunk.js.map": "/UDPort/static/js/2.fc77bbb4.chunk.js.map",
     "static/js/3.07ad5016.chunk.js": "/UDPort/static/js/3.07ad5016.chunk.js",
     "static/js/3.07ad5016.chunk.js.map": "/UDPort/static/js/3.07ad5016.chunk.js.map",
     "index.html": "/UDPort/index.html",
     "static/css/2.0a9ec390.chunk.css.map": "/UDPort/static/css/2.0a9ec390.chunk.css.map",
     "static/css/main.451613b6.chunk.css.map": "/UDPort/static/css/main.451613b6.chunk.css.map",
-    "static/js/2.76f0dedf.chunk.js.LICENSE.txt": "/UDPort/static/js/2.76f0dedf.chunk.js.LICENSE.txt"
+    "static/js/2.fc77bbb4.chunk.js.LICENSE.txt": "/UDPort/static/js/2.fc77bbb4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ed314500.js",
     "static/css/2.0a9ec390.chunk.css",
-    "static/js/2.76f0dedf.chunk.js",
+    "static/js/2.fc77bbb4.chunk.js",
     "static/css/main.451613b6.chunk.css",
-    "static/js/main.d80c5452.chunk.js"
+    "static/js/main.07fb49a9.chunk.js"
   ]
 }
