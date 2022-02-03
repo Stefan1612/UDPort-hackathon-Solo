@@ -5,14 +5,16 @@ const Navbar = (props) => {
   return <div id="Navbar">
     
      
-      <Link to="/UDPort" className="Nav">Home</Link>
-
-      {/*<Link to="/PiePort" className="Nav">PieChart</Link>*/}
+      
+      <Link to="/UDPortPage" className="Nav">UDPortPage</Link>
+     
       <div>
         <div style={{fontSize: "50%", textAlign: "auto"}}>{props.account}</div>  
         <div style={{fontSize: "50%", textAlign: "auto"}}>{props.networkName}: {props.networkChainId}</div>    
       </div>
-      
+      <div className="UDLogOut"style={{fontSize: "50%", textAlign: "auto"}}>
+      {props.udLoginDomain}
+      </div>
   </div>;
 };
 

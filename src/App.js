@@ -1,4 +1,5 @@
 
+
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useERC20Balances } from "react-moralis";
@@ -8,140 +9,64 @@ import {Route, Link, Routes} from "react-router-dom"
 import Navbar from "./Components/Navbar.js"
 import Home from "./Components/Home.js"
 import PiePort from "./Components/PiePort.js"
+import UDPortPage from "./Components/UDPortPage.js"
 import "bootstrap/dist/css/bootstrap.min.css"
 import logo from "./LogoMakr-1ceYNX.png"
+import UAuth from '@uauth/js'
 
+import defaultButton from "./default-button.png"
+import pressedButton from "./hover-button.png"
+import hoverButton from "./pressed-button.png"
 
 const moment = require("moment")
 const {utils, BigNumber} = require('ethers');
 
 function App() {
 
-   //handle State
-   //handle currently logged in account
-   const [account, setAccount] = useState("")  
-   //handle fetching analytics using moralis, gecko state
-   const [areTokensGeckoInitialized, setAreTokensGeckoInitialized] = useState(false)
-   const [areTokensFetched, setAreTokensFetched] = useState(false)
-   //getting al ERC20 tokens moralis hook
-   const { fetchERC20Balances,data, isFetching, error } = useERC20Balances({data: []});
-   //final object used to display and handle every ERC20 token
-   const [finalObject, setFinalObject] = useState([{
-    name: "name",
-    symbol: "symbol",
-    logo: "logo",
-    holderValue: "how much are his holdings worth",
-    balance: "balance",
-    price: "price",
-    decimals: "decimals",
-    token_address: "addressOfToken",
-    marketCap: "marketCap",
-    volume: "volume",
-    priceChange: "24Hour"
-  }])
-  //intermediate while InitializingPort
-  let finalArray = undefined
+  
+  const [imageSrc, setImageSrc] = useState(defaultButton)
+  function handleMouseEnter(){
+    setImageSrc(hoverButton)
+  }
 
-   //provider metamask
-   const provider = new ethers.providers.Web3Provider(window.ethereum)
+  function handleMouseLeave() {
+    setImageSrc(defaultButton)
+  }
 
-   //requesting account and chainId when user first connected to metamask
-   useEffect(() =>{ 
-    FirstLoadGettingAccount()
-    gettingNetworkNameChainId()     
- },[])
- 
-   async function FirstLoadGettingAccount(){
-     if(typeof window.ethereum !== undefined){
-         const accounts = await window.ethereum.request({method: "eth_requestAccounts"}
-         )
-         setAccount(accounts[0])
-     }
-     else {
-         window.alert("Install Metamask!")
-     }
- }
- 
- //on chain change
- useEffect(() =>{
-     window.ethereum.on('chainChanged', handleChainChanged);
-     return () => {
-         window.ethereum.removeListener('chainChanged', handleChainChanged)
-     }
- },[])
- 
- 
- function handleChainChanged(_chainId) {
-     // We recommend reloading the page, unless you must do otherwise
-     window.location.reload();
- }
- 
- //on account change
- useEffect(() =>{
-     window.ethereum.on('accountsChanged', handleAccountsChanged);
-     return () => {
-         window.ethereum.removeListener('accountsChanged', handleAccountsChanged)
-     }
- },[])
- 
- // For now, 'eth_accounts' will continue to always return an array
- function handleAccountsChanged(accounts) {
-     if (accounts.length === 0) {
-     // MetaMask is locked or the user has not connected any accounts
-     console.log('Please connect to MetaMask.');
-     } else if (accounts[0] !== account) {
-     setAccount(accounts[0])
-     window.location.reload();;      
- 
- } 
- }
- //network
- const [network, setNetwork] = useState({
-     chanId: "",
-     name: ""
- })
- async function gettingNetworkNameChainId(){
-     const network = await provider.getNetwork()
-     setNetwork(network)
- 
- }
 
-   //used to calculate your Eth balance from bigNum
-   function bigNumIntoEther4Decimals (data) {
-     // from stackexchange https://ethereum.stackexchange.com/questions/84004/ethers-formatetherwei-with-max-4-decimal-places/97885
-    let remainder = data.mod(1e14);
-    console.log(utils.formatEther(data.sub(remainder)));
-    let res = utils.formatEther(data);
-    res = Math.round(res * 1e4) / 1e4;
-    return res
- }
- 
 
-   
 
-   //fetching the ERC20 holdings of an address
-   async function getTokens(){
-     if(account == ""){
-       return window.alert("You need to install and log into Metamask" )
-     }
-     let id = network.chainId.toString(16)
-     id= "0x"+ id
-    
-     //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
-     await fetchERC20Balances({ params: { chain: id ,address: "0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4" }})
-     
-     
-     console.log("0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4")
-     //here
-     
-     if(isFetching == false){
-      let balance = await provider.getBalance("0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4");
-      //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
-      balance = await bigNumIntoEther4Decimals(balance)
-      setAreTokensFetched(true)
-     }
-     
-   }
+  const uauth = new UAuth({
+    // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
+    clientID: "dwUk1YgsNKPxSUXN2x3QwlSulvL1MMG34iUHnDDA8N0=",
+    clientSecret: "+RtonrEU12tVNBNxEQ3rAWqaVrALKcc7M4IxgO8BfPQ=",
+  
+    // These are the scopes your app is requesting from the ud server.
+    scope: 'openid email:optional wallet',
+  
+    // This is the url that the auth server will redirect back to after every authorization attempt.
+    redirectUri: "http://localhost:3000/UDPortPage",
+  })
+
+  const [a , setA] = useState(1)
+  const [errorMessage, setErrorMessage] = useState("This is the error message")
+
+  const handleLoginButtonClick=
+    e => {
+      
+      setErrorMessage(null)
+      uauth.login().catch(error => {
+        console.error('login error:', error)
+        setErrorMessage('User failed to login.')
+        
+      })
+      setImageSrc(pressedButton)
+      
+    }
+
+
+
+  
  
   /* function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -168,7 +93,14 @@ function App() {
     let labels = []
     let dataPie = []*/
 
-    
+
+
+
+    /*THIS
+
+
+
+
 
   const [dataLoaded, setDataLoaded] = useState(false)
   const [dataInitialized, setDataInitialized] = useState(false)
@@ -181,6 +113,17 @@ function App() {
     getPieChart()
     console.log("finalObject change and getPieChart ran")
 },[portfolioBalance]);*/
+
+
+
+
+
+/*THIS
+
+
+
+
+
 
 
   //fetching all the data for every coin the user holds
@@ -390,19 +333,43 @@ function App() {
          })
        }*/
         
+
+
+
+
+       /*THIS
+
+
+
+
        useEffect(() => {
       
         intializePortPage()
         console.log("Tokens have been fetched using moralis")
     },[areTokensFetched]);
 
+
+    
       
-        
-       if(areTokensFetched == false){
+        */
+    
+      
+     return(<div>
+       <Routes  >
+       <Route  exact path="/UDPort" element={<Home handleLoginButtonClick={handleLoginButtonClick} imageSrc={imageSrc} handleMouseLeave={handleMouseLeave} handleMouseEnter={handleMouseEnter}/>} />
+       <Route exact path="/UDPortPage" element={<UDPortPage />} />
+       </Routes>
+     </div>)
+
+    {/*   if(areTokensFetched == false){
          return <div className="pages " style={{height: "100vh"}}>
            <div className="text-center" style={{paddingTop: "26vh", marginRight: "5vw"}}><img  src={logo}></img></div>
          <h2 className="text-center" style={{paddingTop: "1vh"}}>Login and load your Portfolio!</h2>
            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+
+           {errorMessage && <div>{errorMessage}</div>}
+      <button onClick={handleLoginButtonClick}>Login with Unstoppable</button>
+
            <button className="btn  col-md-2 offset-md-5 btn-outline-primary"onClick={() => getTokens()}>Get Started! </button>
            <footer id="footer" className="fixed-bottom" style={{marginTop: "10vh"}}>
             <i className="fab fa-github">&nbsp;&nbsp;&nbsp; </i>
@@ -419,13 +386,20 @@ function App() {
       <Navbar account={account} networkName={network.name} networkChainId={network.chainId}/>
              
      <div className="pages">
-     <Routes  >
+    <Routes  >
 
+    <Route  exact path="/UDPort" element={<Home />} />
+{/* 
        <Route  exact path="/UDPort" element={<Home intializePortPage={intializePortPage} getTokens={getTokens} chartDataPrice={chartDataPrice} chartDataVolume={chartDataVolume} chartDataMarketCap={chartDataMarketCap} portfolioBalance={portfolioBalance} data={data} finalObject={finalObject} generatingHistoryStats={generatingHistoryStats} changeDayInterval={changeDayInterval}/>} />
 
+       */}
        {/*<Route exact path="/PiePort" element={<PiePort pieDataMarketCap={pieDataMarketCap} />} />*/}
 
+  {/*
+  
+       <Route exact path="/UDPortPage" element={<UDPortPage areTokensFetched={areTokensFetched}/>} />
      </Routes>
+     
      </div >
      <footer id="footer" className="fixed-bottom" style={{marginTop: "10vh"}}>
       <i className="fab fa-github">&nbsp;&nbsp;&nbsp; </i>
@@ -436,6 +410,8 @@ function App() {
       </footer>
     </div>
    );
+
+      */}
  }
 
 export default App;
