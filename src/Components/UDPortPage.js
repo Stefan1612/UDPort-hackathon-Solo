@@ -32,7 +32,7 @@ const UDPortPage = (props) => {
     scope: 'openid email:optional wallet',
   
     // This is the url that the auth server will redirect back to after every authorization attempt.
-    redirectUri: "https://stefan1612.github.io/UDPortPage",
+    redirectUri: "https://stefan1612.github.io/UDPort",
   })
 
  
