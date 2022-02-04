@@ -6,7 +6,7 @@ const Navbar = (props) => {
     
      
       
-      <Link to="/UDPortPage" className="Nav">UDPortPage</Link>
+      
      
       <div>
         <div style={{fontSize: "50%", textAlign: "auto"}}>{props.account}</div>  

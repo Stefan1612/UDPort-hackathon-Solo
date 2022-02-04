@@ -230,14 +230,10 @@ function App() {
     
       //crazy many ERC20 0x3aB28eCeDEa6cdb6feeD398E93Ae8c7b316B1182
       //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
-      await fetchERC20Balances({ params: { chain: id ,address: "0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4" }})
-    
-    
-      console.log("0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4")
-      //here
+      await fetchERC20Balances({ params: { chain: id ,address: account }})
     
       if(isFetching == false){
-      let balance = await provider.getBalance("0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4");
+      let balance = await provider.getBalance(account);
       //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
       balance = await bigNumIntoEther4Decimals(balance)
       setAreTokensFetched(true)
