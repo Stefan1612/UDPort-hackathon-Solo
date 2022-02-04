@@ -32,7 +32,7 @@ const UDPortPage = (props) => {
     scope: 'openid email:optional wallet',
   
     // This is the url that the auth server will redirect back to after every authorization attempt.
-    redirectUri: "https://stefan1612.github.io/UDPort",
+    redirectUri: "http://localhost:3000/UDPort",
   })
 
  
@@ -208,14 +208,14 @@ const UDPortPage = (props) => {
      
      //crazy many ERC20 0x3aB28eCeDEa6cdb6feeD398E93Ae8c7b316B1182
      //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
-     await fetchERC20Balances({ params: { chain: id ,address: account }})
+     await fetchERC20Balances({ params: { chain: id ,address: udLoginAddress }})
      
      
-     console.log(account)
+     console.log(udLoginAddress)
      //here
      
      if(isFetching == false){
-      let balance = await provider.getBalance(account);
+      let balance = await provider.getBalance(udLoginAddress);
       //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
       balance = await bigNumIntoEther4Decimals(balance)
       setAreTokensFetched(true)

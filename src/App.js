@@ -46,7 +46,7 @@ function App() {
       scope: 'openid email:optional wallet',
   
       // This is the url that the auth server will redirect back to after every authorization attempt.
-      redirectUri: "https://stefan1612.github.io/UDPort",
+      redirectUri: "http://localhost:3000/UDPort",
     })
 
     const [a , setA] = useState(1)
@@ -231,7 +231,9 @@ function App() {
       //crazy many ERC20 0x3aB28eCeDEa6cdb6feeD398E93Ae8c7b316B1182
       //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
       await fetchERC20Balances({ params: { chain: id ,address: account }})
-    
+      
+      console.log(account)
+
       if(isFetching == false){
       let balance = await provider.getBalance(account);
       //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
@@ -278,7 +280,7 @@ function App() {
           //here
           await Promise.all(finalArray.map(async(e, i) => {
             let address = e.token_address
-            console.log(address)
+            console.log("token Address = " + address)
             let result = await axios.get(`https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${address}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`)
             
             let num = 1 / 10 ** e.decimals
@@ -302,7 +304,7 @@ function App() {
     
       catch(error){
 
-        
+        console.log("error while pushing into 'something' array ")
         if(error.response){
           console.log(error.response)
           console.log("this is the error response")
@@ -310,9 +312,10 @@ function App() {
         }
         return
       }
-           
+      
+      console.log("This is the 'something' array = " + something)
       setFinalObject(something)
-              
+      console.log(finalObject)        
       let wholeBalance = 0
 
       something.map(e => {
@@ -489,7 +492,7 @@ function App() {
     }*/ } 
 
     //if you dont hold any tokens
-    if(areTokensFetched == true && finalObject.length <= 1){
+    {/*if(areTokensFetched == true && finalObject.length <= 1){
       return(<div className="pages " style={{height: "100vh"}}>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
   
@@ -506,7 +509,7 @@ function App() {
             <button className="pointer UDButtonLogOut"style={{marginLeft: "30vw"}}onClick={handleLogoutButtonClick}>Logout</button>
         </footer>
     </div>)
-    }
+    }*/}
 
     //the portfolio page after logged in and everything is done
     return <div>
