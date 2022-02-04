@@ -551,7 +551,7 @@ function App() {
                         <img  src={index.logo} style={{width: "4vw"}}></img> 
                         {index.name} 
                           <div className="d-flex justify-content-end" >
-                           Get Data Analytics! &nbsp; 
+                           Get Data feeds! &nbsp; 
                        <button className="btn" style={{backgroundColor: "rgb(106, 160, 182)", border: "1px solid"}}onClick={() => generatingHistoryStats(index)}>Click here</button>
                        </div>
                     
