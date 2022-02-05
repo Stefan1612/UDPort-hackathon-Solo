@@ -39,8 +39,8 @@ function App() {
 
     const uauth = new UAuth({
       // These can be copied from the bottom of your app's configuration page on unstoppabledomains.com.
-      clientID: "dwUk1YgsNKPxSUXN2x3QwlSulvL1MMG34iUHnDDA8N0=",
-      clientSecret: "wSEiEUTSTnriPXFX7gTH/U9RwyrhgZFg8Uzvn8b7qUw=",
+      clientID: process.env.REACT_APP_CLIENT_ID_UD,
+      clientSecret: process.env.REACT_APP_CLIENT_SECRET_UD,
   
       // These are the scopes your app is requesting from the ud server.
       scope: 'openid email:optional wallet',
