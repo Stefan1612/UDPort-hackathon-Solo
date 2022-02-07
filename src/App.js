@@ -47,6 +47,7 @@ function App() {
   
       // This is the url that the auth server will redirect back to after every authorization attempt.
       redirectUri: "https://stefan1612.github.io/UDPort",
+      // redirectUri: "http://localhost:3000/UDPort",
     })
 
     const [a , setA] = useState(1)
@@ -222,23 +223,39 @@ function App() {
 
     //fetching the ERC20 holdings of an address
     async function getTokens(){
-      if(account == ""){
-        return window.alert("You need to install and log into Metamask" )
+      if(account == "" && udLoginAddress == ""){
+        return window.alert("You need to install and log into Metamask or login via Unstoppable Domain" )
       }
       let id = network.chainId.toString(16)
       id= "0x"+ id
     
       //crazy many ERC20 0x3aB28eCeDEa6cdb6feeD398E93Ae8c7b316B1182
       //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
-      await fetchERC20Balances({ params: { chain: id ,address: account }})
+      if(udLoginAddress !== ""){
+        console.log("logged in via Unstoppable Domain")
+        await fetchERC20Balances({ params: { chain: id ,address: udLoginAddress }})
       
-      console.log(account)
+        console.log(udLoginAddress)
 
-      if(isFetching == false){
-      let balance = await provider.getBalance(account);
-      //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
-      balance = await bigNumIntoEther4Decimals(balance)
-      setAreTokensFetched(true)
+        if(isFetching == false){
+        let balance = await provider.getBalance(udLoginAddress);
+        balance = await bigNumIntoEther4Decimals(balance)
+        setAreTokensFetched(true)
+        return
+      }
+      else if(account !== ""){
+        console.log("logged in via Metamask")
+        await fetchERC20Balances({ params: { chain: id ,address: account }})
+      
+        console.log(account)
+
+        if(isFetching == false){
+        let balance = await provider.getBalance(account);
+        balance = await bigNumIntoEther4Decimals(balance)
+        setAreTokensFetched(true)
+        }
+      }
+    
       }
     }
 
@@ -464,7 +481,7 @@ function App() {
     //after you logged in with UD but not having fetched and Initialized your ERC20's
     if(areTokensFetched == false){
       return(<div className="pages " style={{height: "100vh"}}>
-        <Navbar account={account} networkName={network.name} networkChainId={network.chainId} udLoginDomain={udLoginDomain}/>
+        <Navbar account={udLoginAddress} networkName={network.name} networkChainId={network.chainId} udLoginDomain={udLoginDomain}/>
       <div className="text-center" style={{paddingTop: "26vh", marginRight: "5vw"}}><img  src={logo}></img></div>
     <h2 className="text-center" style={{paddingTop: "1vh"}}>You are ready to fetch your ERC20's!</h2>
     <div className="text-center" style={{ fontSize: "80%"}}>
@@ -515,7 +532,7 @@ function App() {
     return <div>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
 
-      <Navbar account={account} networkName={network.name} networkChainId={network.chainId} udLoginDomain={udLoginDomain}/>
+      <Navbar account={udLoginAddress} networkName={network.name} networkChainId={network.chainId} udLoginDomain={udLoginDomain}/>
       <h1 className="d-flex justify-content-center" style={{paddingTop: "6vh"}}>{portfolioBalance} USD</h1>
     <button className="btn btn-danger offset-md-1" style={{fontSize: "70%"}}onClick={() => getTokens()}>Refetch</button> 
     <div className="col-md-4 offset-md-1" style={{fontSize: "70%"}}>Refetch Portfolio in case Moralis or CoinGeckos API has issues and You can not see your Data instantely</div>
