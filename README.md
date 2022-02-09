@@ -7,6 +7,7 @@
 ### Eth Address: 0xCF4a75825f40b46bEdca7aBFC6bfF63a50752724
 
 ### Discord Id: 353599460145627136
+### Discord Name: Rank2Ape#6604
 
 ### Email: bernd49634@web.de
 
