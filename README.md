@@ -13,7 +13,7 @@
 ### To-do's
 - Host website on netlify instead of Github Pages - Github Pages has some weird interactions with Redirects.
 - Rewrite frontend with MUI instead of Bootstrap
-- Allow the Portfolio to track ALL ERC20's
+- Allow the Portfolio to track ALL ERC20's.
 - Use a subgraph to grab historic data instead of centralized Coin Gecko API
 
 ## Approach
