@@ -1,3 +1,5 @@
+/* 
+ // Unnecessary code for now, but can be useful in the future
 import { Line, Pie, Chart } from 'react-chartjs-2';
 
 import { Chart as ChartJS } from 'chart.js/auto'
@@ -27,4 +29,5 @@ const PiePort = (props) => {
   </div>;
 };
 
-export default PiePort;
+export default PiePort; 
+*/
