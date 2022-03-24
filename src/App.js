@@ -9,7 +9,7 @@ import {Route, Link, Routes, Navigate} from "react-router-dom"
 import Navbar from "./Components/Navbar.js"
 import Home from "./Components/Home.js"
 import { Line, Pie, Chart } from 'react-chartjs-2';
-import PiePort from "./Components/PiePort.js"
+// import PiePort from "./Components/PiePort.js"
 import UDPortPage from "./Components/UDPortPage.js"
 import "bootstrap/dist/css/bootstrap.min.css"
 import logo from "./LogoMakr-1ceYNX.png"
