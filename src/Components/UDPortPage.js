@@ -9,6 +9,7 @@ import Navbar from "./Navbar.js"
 import Home from "./Home.js"
 import { Line, Pie, Chart } from 'react-chartjs-2';
 import "bootstrap/dist/css/bootstrap.min.css"
+// add import SimpleBlock logo
 import logo from "../LogoMakr-1ceYNX.png"
 import UAuth from '@uauth/js'
 import defaultButton from "../default-button.png"
@@ -206,6 +207,7 @@ const UDPortPage = (props) => {
      let id = network.chainId.toString(16)
      id= "0x"+ id
      
+     // testing addresses
      //crazy many ERC20 0x3aB28eCeDEa6cdb6feeD398E93Ae8c7b316B1182
      //mainnet test address 0x953a97B1f704Cb5B492CFBB006388C0fbcF34Bb4
      await fetchERC20Balances({ params: { chain: id ,address: udLoginAddress }})
@@ -216,7 +218,7 @@ const UDPortPage = (props) => {
      
      if(isFetching == false){
       let balance = await provider.getBalance(udLoginAddress);
-      //wenn ich portfolio ausrechne muss ich bignum nehmen sonst zu ungenau mit der bigNumIntoEther4Decimals
+      // calculating the portfolio, i need to use bigNum else the calculation will be off
       balance = await bigNumIntoEther4Decimals(balance)
       setAreTokensFetched(true)
      }
