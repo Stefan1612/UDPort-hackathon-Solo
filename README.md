@@ -36,7 +36,7 @@ Fetches all ERC20's instantely and visualizes their Historic data.
 - [Node.js](https://nodejs.org/en/)
 
 ## Fundamental Issues
-We are indexing historic data from a centralized API, therefore disrupting the overall idea of this space (decentralization). In theory coin gecko could present us falls informationen (even tho it's unlikely that coingecko would do so). 
+We are indexing historic data from a centralized API, therefore disrupting the overall idea of this space (decentralization). In theory coin gecko could present us false informationen (even tho it's unlikely that coingecko would do so). 
 ## Ways to solve the problems
 Using an indexed subgraph (not talking about the centralized API THE GRAPH is giving us) but an actual subgraph indexed from so called Indexers, we could fetch all historic data from a decentralized API.
 ## Technical Issues
