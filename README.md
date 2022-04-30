@@ -1,6 +1,6 @@
 # Project Name = UDPort
 
-# Outdated Project
+# Outdated Project - Work in Progress
 
 ## Hackathon's submissions requirements
 - Working Website: https://stefan1612.github.io/UDPort/
@@ -10,8 +10,6 @@
 - Discord Name: Rank2Ape#6604
 
 
-## Status
-- Work in progress
 ### To-do's
 - Host website on netlify instead of Github Pages - Github Pages has some weird interactions with Redirects.
 - Rewrite frontend with MUI instead of Bootstrap
