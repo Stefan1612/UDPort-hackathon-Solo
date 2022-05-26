@@ -1,13 +1,11 @@
 # Project Name = UDPort
 
-# Outdated Project - Work in Progress
+# THIS IS NOT THE NFT MARKETPLACE (SRY I TANGLED UP THE GITHUB LINKS IN MY NEW HACKATHON SUBMISSION).
+If you are coming from https://gitcoin.co/issue/28808 , pls redirect to this github project from me.
+https://github.com/Stefan1612/UD-Hackathon-NFT-Market , this is the actual NFT Marketplace submitted as project.
 
-## Hackathon's submissions requirements
-- Working Website: https://stefan1612.github.io/UDPort/
-- Demo video:  https://www.youtube.com/watch?v=Isl4JTKANaw
-- Eth Address: 0xCF4a75825f40b46bEdca7aBFC6bfF63a50752724
-- Discord Id: 353599460145627136
-- Discord Name: Rank2Ape#6604
+
+
 
 
 ### To-do's
