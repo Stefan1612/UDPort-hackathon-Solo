@@ -4,7 +4,7 @@
 
 # THIS IS NOT THE NFT MARKETPLACE (SRY I TANGLED UP THE GITHUB LINKS IN MY NEW HACKATHON SUBMISSION).
 # If you are coming from https://gitcoin.co/issue/28808 , pls redirect to this github project from me.
-# https://github.com/Stefan1612/UD-Hackathon-NFT-Market , this is the actual NFT Marketplace submitted as project for that specific bounty (https://gitcoin.co/issue/28808)
+# https://github.com/Stefan1612/UD-Hackathon-NFT-Market , this is the actual NFT Marketplace submitted as project for this specific bounty (https://gitcoin.co/issue/28808)
 
 
 
